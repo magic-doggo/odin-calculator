@@ -15,19 +15,20 @@ body {
   width: 450px;
   border: 3px solid darkblue;
   margin-top: 100px;
-  background-color: rgb(161, 161, 243);
+  /* background-color: rgb(161, 161, 243); */
+  background-color: darkgray;
   padding: 20px 10px;
   border-radius: 30px;
 }
 
 .logo {
-  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-  -webkit-background-clip: text;
+  background-clip: border-box;
+  background-image: linear-gradient(to left, blue, green, yellow, orange, red); -webkit-background-clip: text;
   color: transparent;
   width: fit-content
 }
 .screen {
-  background-color: gray;
+  background-color: rgb(219, 205, 205);
   margin: 10px 24px;
   height: 60px;
   display: flex;
