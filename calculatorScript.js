@@ -17,7 +17,7 @@ let firstNumber = "";
 let secondNumber = "";
 const button1 = document.querySelector("#one");
 const button2 = document.querySelector("#two");
-let displayScreen = document.querySelector("#display");
+let displayScreen = document.querySelector("#main-display");
 const plusButton = document.querySelector("#plus");
 
 const anyButton = document.querySelectorAll(".button");

@@ -15,10 +15,10 @@ body {
   width: 450px;
   border: 3px solid darkblue;
   margin-top: 100px;
-  /* background-color: rgb(161, 161, 243); */
   background-color: darkgray;
   padding: 20px 10px;
   border-radius: 30px;
+  box-shadow: black 1px 1px;
 }
 
 .logo {
@@ -28,15 +28,27 @@ body {
   width: fit-content
 }
 .screen {
+  display: flex;
+  flex-direction: column;
   background-color: rgb(219, 205, 205);
   margin: 10px 24px;
-  height: 60px;
+  height: 80px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   border: 2px solid black;
   box-shadow: darkblue 1px 1px;
   padding: 0 20px;
+}
+
+#small-display {
+  display: flex;
+  flex-basis: 30%;
+  font-size: 20px;
+  align-self: flex-end;
+}
+#main-display {
+  flex-basis: 60%;
 }
 
 .buttons {
