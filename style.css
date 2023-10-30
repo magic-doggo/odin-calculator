@@ -45,7 +45,14 @@ body {
 
 }
 
-.button {
+.button-operator {
+  width: 30%;
+  margin: 5px;
+}
+
+.button,
+.button-operator
+ {
   width: 30%;
   margin: 5px;
   padding: 30px 1px;
@@ -66,7 +73,7 @@ body {
 
 }
 
-.right-buttons > .button {
+.right-buttons > .button-operator {
   width: 100%;
   border-radius: 5px;
 }

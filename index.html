@@ -9,7 +9,7 @@
   <div class="container">
     <div class="logo">Pal-culator</div>
     <div class="screen">
-      <div class="numbers-display">8888889898998</div>
+      <div class="numbers-display" id="display">8888889898998</div>
     </div>
     <div class="buttons">
       <div class="left-buttons">
@@ -22,16 +22,16 @@
         <button class="number button">7</button>
         <button class="number button">8</button>
         <button class="number button">9</button>
-        <button class="special button clear">Clear</button>
+        <button class="special button-operator clear">Clear</button>
         <button class="number button">0</button>
-        <button class="operator button equal">=</button>
+        <button class="operator button-operator equal">=</button>
       </div> 
       <!-- maybe increase font size on click? or something funny -->
       <div class="right-buttons">
-        <button class="operator button">+</button>
-        <button class="operator button">-</button>
-        <button class="operator button">*</button>
-        <button class="operator button">/</button>
+        <button class="operator button-operator" id="plus">+</button>
+        <button class="operator button-operator">-</button>
+        <button class="operator button-operator">*</button>
+        <button class="operator button-operator">/</button>
       </div>
     </div>
   </div>
