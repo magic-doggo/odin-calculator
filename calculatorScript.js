@@ -1,16 +1,26 @@
 const operate = function (number1, operator, number2){
   if (operator == "+"){
-    return parseInt(number1) + parseInt(number2)
+    return parseFloat(number1) + parseFloat(number2)
   }
   if (operator == "-"){
-    return parseInt(number1) - parseInt(number2)
+    return parseFloat(number1) - parseFloat(number2)
   }
   if (operator == "/"){
-    return parseInt(number1) / parseInt(number2)
+    return parseFloat(number1) / parseFloat(number2)
   }
   if (operator == "*"){
-    return parseInt(number1) * parseInt(number2)
+    return parseFloat(number1) * parseFloat(number2)
   }
+}
+
+ClearAll = function () {
+  firstNumber = "";
+  secondNumber = "";
+  operatorVariable = ""
+  result = ""
+  lastButtonPress = ""
+  mainDisplayScreen.textContent = ""
+  smallDisplayScreen.textContent = ""
 }
 
 let firstNumber = "";
@@ -28,14 +38,18 @@ anyButton.forEach(ravioliEvent => {
     lastButtonPress = ravioliEvent.textContent;
     let numberPattern = /[0-9]/; 
     let trueIfNumber = numberPattern.test(lastButtonPress) //return true if last button was numeric
-    if ((firstNumber == "") || (secondNumber=="" && trueIfNumber && operatorVariable == "")){ //edit firstNumber
+    if ((firstNumber == "" && trueIfNumber) || (secondNumber=="" && trueIfNumber && operatorVariable == "")){ //edit firstNumber
       firstNumber += lastButtonPress;
       mainDisplayScreen.textContent += lastButtonPress;
       return; 
     }
     if (!trueIfNumber && secondNumber == ""){ // if last key was operator edit operatorVariable
       operatorVariable = lastButtonPress;
-      mainDisplayScreen.textContent += lastButtonPress;
+      smallDisplayScreen.textContent = firstNumber
+      mainDisplayScreen.textContent = lastButtonPress;
+      if (lastButtonPress == "Clear") {
+        ClearAll();
+      }
       return;
     }
     if ((secondNumber != "" && trueIfNumber) || (firstNumber != "" && trueIfNumber && operatorVariable != "")){//edit secondNumber
@@ -44,13 +58,22 @@ anyButton.forEach(ravioliEvent => {
       mainDisplayScreen.textContent = secondNumber;
       return;
     }
-    if (secondNumber != "" && !trueIfNumber){ //calculate result when an operator or equal is pressed
+    if (secondNumber != "" && !trueIfNumber){ //calculate result when an operator or equal is pressed. or clear everything
       result = operate(firstNumber, operatorVariable, secondNumber);
+      if (result == Infinity) {
+        ClearAll()
+        result = "Don't divide by 0!"
+        smallDisplayScreen.textContent = "Don't divide by 0!"
+        return;
+      }
       firstNumber = result;
       secondNumber = "";
       smallDisplayScreen.textContent = result;
       if (lastButtonPress == "="){
         mainDisplayScreen.textContent = `${result}`;    
+      }
+      else if (lastButtonPress == "Clear") {
+        ClearAll();
       }
       else {
         operatorVariable = lastButtonPress;
