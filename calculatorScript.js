@@ -1,15 +1,15 @@
 const operate = function (number1, operator, number2){
   if (operator == "+"){
-    return number1 + number2
+    return parseInt(number1) + parseInt(number2)
   }
   if (operator == "-"){
-    return number1 - number2
+    return parseInt(number1) - parseInt(number2)
   }
   if (operator == "/"){
-    return number1 / number2
+    return parseInt(number1) / parseInt(number2)
   }
   if (operator == "*"){
-    return number1 * number2
+    return parseInt(number1) * parseInt(number2)
   }
 } // do I need to create separate functions for each operator and then call them here?
 
@@ -31,25 +31,36 @@ anyButton.forEach(ravioliEvent => {
     lastButtonPress = ravioliEvent.textContent;
     let numberPattern = /[0-9]/;
     let trueIfNumber = numberPattern.test(lastButtonPress)
-    if ((firstNumber == "") || (secondNumber=="" && trueIfNumber && operatorVariable == "")){
+    if ((firstNumber == "") || (secondNumber=="" && trueIfNumber && operatorVariable == "")){ //edit firstNumber
       firstNumber += lastButtonPress;
       mainDisplayScreen.textContent += lastButtonPress;
+      console.log(firstNumber, secondNumber, operatorVariable, "firstnr")
       return; 
     }
-    if (!trueIfNumber){ // if last key was operator
+    if (!trueIfNumber && secondNumber == ""){ // if last key was operator edit operatorVariable
       operatorVariable = lastButtonPress;
       mainDisplayScreen.textContent += lastButtonPress;
+      console.log(firstNumber, secondNumber, operatorVariable, "operatoredit")
       return;
     }
-    if ((secondNumber != "" && trueIfNumber) || (firstNumber != "" && trueIfNumber && operatorVariable != "")){
+    if ((secondNumber != "" && trueIfNumber) || (firstNumber != "" && trueIfNumber && operatorVariable != "")){//edit secondNumber
       secondNumber += lastButtonPress;
       smallDisplayScreen.textContent = `${firstNumber}${operatorVariable}`;
       mainDisplayScreen.textContent = secondNumber;
+      console.log(firstNumber, secondNumber, operatorVariable, "secondnredit")
       return;
     }
-    console.log(mainDisplayScreen.textContent)
-
-
+    if (secondNumber != "" && !trueIfNumber){
+      console.log(operatorVariable)
+      result = operate(firstNumber, operatorVariable, secondNumber);
+      firstNumber = result
+      secondNumber = ""
+      operatorVariable = lastButtonPress;
+      smallDisplayScreen.textContent = result;
+      mainDisplayScreen.textContent = `${result} ${lastButtonPress}`;
+      return;
+    }
+  
     
   }
 });
