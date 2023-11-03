@@ -6,10 +6,12 @@ const operate = function (number1, operator, number2){
     return parseFloat(number1) - parseFloat(number2);
   }
   if (operator == "/"){
-    return +(parseFloat(number1) / parseFloat(number2)).toFixed(8);
+    return parseFloat(number1) / parseFloat(number2);
+    // return +(parseFloat(number1) / parseFloat(number2)).toFixed(8);
   }
   if (operator == "*"){
-    return +(parseFloat(number1) * parseFloat(number2)).toFixed(8);
+    return parseFloat(number1) * parseFloat(number2);
+    // return +(parseFloat(number1) * parseFloat(number2)).toFixed(8);
   }
 }
 
@@ -70,7 +72,8 @@ anyButton.forEach(ravioliEvent => {
       secondNumber = "";
       smallDisplayScreen.textContent = result;
       if (lastButtonPress == "="){
-        mainDisplayScreen.textContent = `${result}`;    
+        mainDisplayScreen.textContent = `${result}`;
+        operatorVariable = "";  
       }
       else if (lastButtonPress == "Clear") {
         ClearAll();
